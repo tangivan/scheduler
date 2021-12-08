@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-const Header = (props) => {
-  const { time } = props;
+const Header = ({ time }) => {
   return (
     <header className="appointment__time">
       <h4 className="text--semi-bold">{time}</h4>

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import "./styles.scss";
 
-const Appointment = (props) => {
-  const { time } = props;
+const Appointment = ({ time }) => {
   return (
     <article className="appointment">
       {time ? `Appointment at ${time}` : 'No Appointments'}

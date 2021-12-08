@@ -4,7 +4,7 @@ import DayList from "./DayList";
 import "components/Application.scss";
 import "components/DayListItem.scss"
 
-export default function Application(props) {
+export default function Application() {
   const days = [
     {
       id: 1,

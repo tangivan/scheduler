@@ -1,8 +1,8 @@
 import React from "react";
 import classNames from "classnames";
 import "./DayListItem.scss"
-export default function DayListItem(props) {
-  const { name, spots, selected, setDay } = props;
+
+export default function DayListItem({ name, spots, selected, setDay }) {
 
   const classList = classNames("day-list__item", {
     "day-list__item--selected": selected,

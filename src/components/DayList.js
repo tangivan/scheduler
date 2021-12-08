@@ -1,7 +1,6 @@
 import React from 'react';
 import DayListItem from './DayListItem';
-const DayList = (props) => {
-  const { days, value, onChange } = props;
+const DayList = ({ days, value, onChange }) => {
 
   return (
     <ul>
