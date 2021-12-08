@@ -1,7 +1,7 @@
 import React from 'react';
 import DayListItem from './DayListItem';
 const DayList = (props) => {
-  const { days, day, setDay } = props;
+  const { days, value, onChange } = props;
 
   return (
     <ul>
@@ -10,8 +10,8 @@ const DayList = (props) => {
           key={dayItem.id}
           name={dayItem.name}
           spots={dayItem.spots}
-          setDay={setDay}
-          selected={dayItem.name === day}
+          setDay={onChange}
+          selected={dayItem.name === value}
         />
       )}
     </ul>
