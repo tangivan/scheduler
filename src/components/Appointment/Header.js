@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from "react";
 
 const Header = ({ time }) => {
   return (
@@ -7,6 +7,6 @@ const Header = ({ time }) => {
       <hr className="appointment__separator" />
     </header>
   );
-}
+};
 
 export default Header;
