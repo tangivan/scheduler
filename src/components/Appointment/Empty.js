@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from "react";
 
 const Empty = ({ onAdd }) => {
   return (
@@ -11,6 +11,6 @@ const Empty = ({ onAdd }) => {
       />
     </main>
   );
-}
+};
 
 export default Empty;
