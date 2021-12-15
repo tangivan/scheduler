@@ -32,7 +32,6 @@ const Appointment = ({
 
   useEffect(() => {
     if (interview && mode === EMPTY) {
-      console.log("interivew should always be true here: ", interview);
       transition(SHOW);
     }
     if (interview === null && mode === SHOW) {
@@ -75,7 +74,7 @@ const Appointment = ({
   };
 
   return (
-    <article className="appointment">
+    <article data-testid="appointment" className="appointment">
       <Header time={time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === CONFIRM && (
