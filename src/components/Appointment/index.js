@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Empty from "./Empty";
 import Header from "./Header";
 import Show from "./Show";
@@ -29,6 +29,16 @@ const Appointment = ({
   const ERROR_DELETE = "ERROR_DELETE";
 
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
+
+  useEffect(() => {
+    if (interview && mode === EMPTY) {
+      console.log("interivew should always be true here: ", interview);
+      transition(SHOW);
+    }
+    if (interview === null && mode === SHOW) {
+      transition(EMPTY);
+    }
+  }, [interview, transition, mode]);
 
   const save = (name, interviewer) => {
     const interview = {
@@ -75,7 +85,7 @@ const Appointment = ({
           onCancel={cancelConfirm}
         />
       )}
-      {mode === SHOW && (
+      {mode === SHOW && interview && (
         <Show
           student={interview.student}
           interviewer={interview.interviewer}
