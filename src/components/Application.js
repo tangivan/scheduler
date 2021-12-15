@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
 import getAppointmentsForDay, {
@@ -14,7 +14,23 @@ export default function Application() {
   const { state, setDay, bookInterview, deleteInterview } =
     useApplicationData();
 
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const interviewersForDay = getInterviewersForDay(state, state.day);
+  const appointmentList = getAppointmentsForDay(state, state.day).map(
+    (appointment) => {
+      const interview = getInterview(state, appointment.interview);
+      return (
+        <Appointment
+          key={appointment.id}
+          id={appointment.id}
+          time={appointment.time}
+          interview={interview}
+          interviewers={interviewersForDay}
+          bookInterview={bookInterview}
+          deleteInterview={deleteInterview}
+        />
+      );
+    }
+  );
 
   return (
     <main className="layout">
@@ -35,21 +51,7 @@ export default function Application() {
         />
       </section>
       <section className="schedule">
-        {dailyAppointments.map((appointment) => {
-          const interview = getInterview(state, appointment.interview);
-          const interviewersForDay = getInterviewersForDay(state, state.day);
-          return (
-            <Appointment
-              key={appointment.id}
-              id={appointment.id}
-              time={appointment.time}
-              interview={interview}
-              interviewers={interviewersForDay}
-              bookInterview={bookInterview}
-              deleteInterview={deleteInterview}
-            />
-          );
-        })}
+        {appointmentList}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
