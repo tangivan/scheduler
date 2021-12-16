@@ -67,7 +67,7 @@ const useApplicationData = () => {
         data: { days, appointments, interviewers },
       });
     });
-  }, [dispatch]);
+  }, []);
 
   return { state, setDay, bookInterview, deleteInterview };
 };
