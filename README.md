@@ -95,7 +95,7 @@ PORT=
 CHOKIDAR_USEPOLLING=false
 ```
 
-4. Start the client using the `npm run start` command. The app will be served at <http://localhost:8000/>.
+4. Start the client using the `npm run start` command.
 5. Start the api server (not from this repository) using the `npm run start` command.
 6. Start the api server (not from this repository) in error mode with `npm run test` command.
    <br/>
