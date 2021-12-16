@@ -1,3 +1,4 @@
+import updateSpots from "helpers/updateSpots";
 export const SET_DAY = "SET_DAY";
 export const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
 export const SET_INTERVIEW = "SET_INTERVIEW";
@@ -18,7 +19,13 @@ const applicationReducer = (state, action) => {
         interviewers,
       };
     case SET_INTERVIEW: {
-      const { appointments, days } = action.data;
+      // create new appointments state
+      const { id, interview } = action;
+      const appointment = { ...state.appointments[id], interview };
+      const appointments = { ...state.appointments, [id]: appointment };
+
+      // create new days state
+      const days = updateSpots(state, appointments);
       return {
         ...state,
         appointments,
