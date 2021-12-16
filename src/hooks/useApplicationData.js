@@ -18,9 +18,9 @@ const useApplicationData = () => {
 
   const bookInterview = (id, interview) => {
     const endpoint = `/api/appointments/${id}`;
-    return axios.put(endpoint, { interview }).then(() => {
-      dispatch({ type: SET_INTERVIEW, id, interview });
-    });
+    return axios
+      .put(endpoint, { interview })
+      .then(() => dispatch({ type: SET_INTERVIEW, id, interview }));
   };
 
   const deleteInterview = (id) => {
@@ -31,20 +31,10 @@ const useApplicationData = () => {
   };
 
   useEffect(() => {
-    const webSocket = new WebSocket(
-      process.env.REACT_APP_WEBSOCKET_URL,
-      "protocolOne"
-    );
-
-    webSocket.onopen = () => {
-      webSocket.send("ping");
-    };
-
+    const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
     webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data);
-      if (message.type === SET_INTERVIEW) {
-        dispatch(message);
-      }
+      if (message.type === SET_INTERVIEW) dispatch(message);
     };
     return () => webSocket.close();
   }, []);
