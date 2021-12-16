@@ -24,14 +24,3 @@ export function getInterviewersForDay(state, day) {
   );
   return interviewsForDay;
 }
-
-export const updateSpots = (state, appointments) => {
-  const spots = getAppointmentsForDay(
-    { ...state, appointments },
-    state.day
-  ).filter((appoints) => !appoints.interview).length;
-  const days = state.days.map((day) =>
-    day.name === state.day ? { ...day, spots } : day
-  );
-  return days;
-};
