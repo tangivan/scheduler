@@ -31,12 +31,8 @@ const Appointment = ({
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
 
   useEffect(() => {
-    if (interview && mode === EMPTY) {
-      transition(SHOW);
-    }
-    if (interview === null && mode === SHOW) {
-      transition(EMPTY);
-    }
+    if (interview && mode === EMPTY) transition(SHOW);
+    if (interview === null && mode === SHOW) transition(EMPTY);
   }, [interview, transition, mode]);
 
   const save = (name, interviewer) => {

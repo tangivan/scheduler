@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// Custom hook to handle mode transitions
 const useVisualMode = (initial) => {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);

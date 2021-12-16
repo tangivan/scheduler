@@ -30,6 +30,7 @@ const useApplicationData = () => {
       .then(() => dispatch({ type: SET_INTERVIEW, id, interview: null }));
   };
 
+  // Web socket connection to receive SET_INTERVIEW requests
   useEffect(() => {
     const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
     webSocket.onmessage = (event) => {
@@ -39,6 +40,7 @@ const useApplicationData = () => {
     return () => webSocket.close();
   }, []);
 
+  // Fetch Data on initial render
   useEffect(() => {
     const daysURL = "/api/days";
     const appointmentsURL = "/api/appointments";
